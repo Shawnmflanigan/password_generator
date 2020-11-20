@@ -14,11 +14,54 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // All arrays for password selection
-let lowerCase =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+let lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-let upperCase =['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-let num =[1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-let specChar =['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '<', '>'];
+let specChar = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '<', '>'];
 
+// Empty arrays
+
+let allChars = [];
+allChars = '';
+
+// Password Character length function
+
+function passCharLength () {
+   charLimit =(prompt('Please select the number of characters you would like for your password. Please choose between 8-128.'));
+  if (8 > charLimit && charLimit < 128) {
+    alert('Please try again with 8 through 128 characters for your password');
+    passCharLength();
+  }
+}
+
+// Generate Password Function with if statements.
+
+function generatePassword () {
+  
+  allChars =[];
+
+  let s1 = confirm('Do you want to use lower case letters?');
+  if (s1 == true) {
+    allChars = [...allChars, ...lowerCase];
+  }
+
+  let s2 = confirm('Do you want to use upper case letters?');
+  if (s2 == true) {
+    allChars = [...allChars, ...upperCase];
+  }
+
+  let s3 = confirm('Do you want to use numbers?');
+  if (s3 == true) {
+    allChars = [...allChars, ...num];
+  }
+
+  let s4 = confirm('Do you want to use special characters?');
+  if (s4 == true) {
+    allChars = [...allChars, ...specChar];
+  }
+  console.log(allChars);
+  passCharLength();
+}  
